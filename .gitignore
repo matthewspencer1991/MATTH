@@ -46,3 +46,5 @@ Temporary Items
 *.exe
 Debug
 *.suo
+*.log
+*.vcxproj.filters
