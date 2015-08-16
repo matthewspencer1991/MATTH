@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-
+#include <cmath>
 namespace MATTH
 {
 	/*
@@ -27,6 +27,7 @@ namespace MATTH
 		Vector3<T>& operator*=(const T& rhs);
 		T length() const;
 		Vector3<T>& normalise();
+		T dot(const Vector3<T>& rhs) const;
 		void print() const;
 	private:
 		T x;
@@ -137,6 +138,23 @@ namespace MATTH
 		y = y / length;
 		z = z / length;
 		return *this;
+	}
+
+	template<typename T>
+	T Vector3<T>::dot(const Vector3<T>& rhs) const
+	{
+		T p_q_cos_theta = x * rhs.get_x() + y * rhs.get_y() + z * rhs.get_z();
+
+		Vector3<T> p = *this;
+		Vector3<T> q = rhs;
+
+		T p_length = p.length();
+		T q_length = q.length();
+
+		T cos_theta = p_q_cos_theta / p_length * q_length;
+
+		T theta_rad = acos(cos_theta);
+		return theta_rad;
 	}
 
 	template<typename T>
