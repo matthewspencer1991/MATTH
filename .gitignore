@@ -45,6 +45,11 @@ Temporary Items
 # Visual studio 2013 C++ files
 *.exe
 Debug
+Release
 *.suo
 *.log
 *.vcxproj.filters
+*.obj
+*.tlog
+*.pdb
+*.sdf

@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+
 namespace MATTH
 {
 	/*
@@ -19,7 +20,13 @@ namespace MATTH
 		void set_y(const T& new_y);
 		void set_z(const T& new_z);
 		Vector3<T> operator+(const Vector3<T>& rhs);
+		Vector3<T>& operator+=(const Vector3<T>& rhs);
 		Vector3<T> operator-(const Vector3<T>& rhs);
+		Vector3<T>& operator-=(const Vector3<T>& rhs);
+		Vector3<T> operator*(const T& rhs);
+		Vector3<T>& operator*=(const T& rhs);
+		T length() const;
+		Vector3<T>& normalise();
 		void print() const;
 	private:
 		T x;
@@ -78,9 +85,58 @@ namespace MATTH
 	}
 
 	template<typename T>
+	Vector3<T>& Vector3<T>::operator+=(const Vector3<T>& rhs)
+	{
+		x *= rhs; 
+		y *= rhs;
+		z *= rhs;
+		return *this;
+	}
+
+	template<typename T>
 	Vector3<T> Vector3<T>::operator-(const Vector3<T>& rhs)
 	{
 		return Vector3(x - rhs.get_x(), y - rhs.get_y(), z - rhs.get_z());
+	}
+
+	template<typename T>
+	Vector3<T>& Vector3<T>::operator-=(const Vector3<T>& rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+		return *this;
+	}
+
+	template<typename T>
+	Vector3<T> Vector3<T>::operator*(const T& rhs)
+	{
+		return Vector3(x * rhs, y * rhs, z * rhs);
+	}
+
+	template<typename T>
+	Vector3<T>& Vector3<T>::operator*=(const T& rhs)
+	{
+		x *= rhs;
+		y *= rhs;
+		z *= rhs;
+		return *this;
+	}
+
+	template<typename T>
+	T Vector3<T>::length() const
+	{
+		return x * x + y * y + z * z;
+	}
+
+	template<typename T>
+	Vector3<T>& Vector3<T>::normalise()
+	{
+		T length = length();
+		x = x / length;
+		y = y / length;
+		z = z / length;
+		return *this;
 	}
 
 	template<typename T>
