@@ -1,4 +1,5 @@
 #include "Vector3.h"
+#include "Helper.h"
 using namespace MATTH;
 
 int main()
@@ -13,6 +14,14 @@ int main()
 	Vector3<float> R(1, 0, 0);
 	Vector3<float> S(0, 1, 0);
 	float dot = R.dot(S);
-	std::cout << dot * 180 / 3.14159 << std::endl;
+	std::cout << MATTH::rad_to_deg(dot) << std::endl;
+	std::cout << MATTH::deg_to_rad(MATTH::rad_to_deg(dot)) << std::endl;
+
+	Vector3<float> T(3, 4, 7);
+	Vector3<float> U(2, 1, 9);
+
+	Vector3<float> dir = T.direction(U);
+	dir.print();
+	
 	return 0;
 }

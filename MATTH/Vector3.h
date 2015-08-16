@@ -28,6 +28,7 @@ namespace MATTH
 		T length() const;
 		Vector3<T>& normalise();
 		T dot(const Vector3<T>& rhs) const;
+		Vector3<T> direction(const Vector3& rhs) const;
 		void print() const;
 	private:
 		T x;
@@ -155,6 +156,15 @@ namespace MATTH
 
 		T theta_rad = acos(cos_theta);
 		return theta_rad;
+	}
+
+	template<typename T>
+	Vector3<T> Vector3<T>::direction(const Vector3<T>& rhs) const
+	{
+		Vector3<T> P = *this;
+		Vector3<T> Q = rhs;
+
+		return Q - P;
 	}
 
 	template<typename T>
