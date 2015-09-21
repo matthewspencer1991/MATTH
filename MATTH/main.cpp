@@ -22,6 +22,9 @@ int main()
 
 	Vector3<float> dir = T.direction(U);
 	dir.print();
+
+	dir = T;
+	std::cout << "T and U dot product: " << dir.dot(U) << "\n";
 	
 	return 0;
 }
